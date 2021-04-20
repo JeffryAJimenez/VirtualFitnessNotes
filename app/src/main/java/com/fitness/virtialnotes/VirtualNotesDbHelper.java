@@ -127,6 +127,51 @@ public class VirtualNotesDbHelper extends SQLiteOpenHelper {
                 selectionArgs);
     }
 
+    public ArrayList<Note> getNotesByMuscleGroup(String muscleGroup){
+
+        SQLiteDatabase db = getReadableDatabase();
+        ArrayList<Note> notes = new ArrayList<Note>();
+
+        String[] projection = {
+                BaseColumns._ID,
+                FeedEntry.COLUMN_NAME_EXERCISE_NAME,
+                FeedEntry.COLUMN_NAME_MUSCLE_GROUP,
+                FeedEntry.COLUMN_NAME_DESCRIPTION
+        };
+
+        // How you want the results sorted in the resulting Cursor
+        String sortOrder = FeedEntry.COLUMN_NAME_MUSCLE_GROUP + " DESC";
+        String selection = FeedEntry.COLUMN_NAME_MUSCLE_GROUP+ " LIKE ?";
+        String[] selectionArgs = {muscleGroup};
+
+        Cursor cursor = db.query(
+                FeedEntry.TABLE_NAME,   // The table to query
+                projection,             // The array of columns to return (pass null to get all)
+                selection,              // The columns for the WHERE clause
+                selectionArgs,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                sortOrder               // The sort order
+        );
+
+        int name_index = cursor.getColumnIndex(FeedEntry.COLUMN_NAME_EXERCISE_NAME);
+        int description_index = cursor.getColumnIndex(FeedEntry.COLUMN_NAME_DESCRIPTION);
+        int muscleGroup_index = cursor.getColumnIndex(FeedEntry.COLUMN_NAME_MUSCLE_GROUP);
+
+        while(cursor.moveToNext()){
+
+            String name = cursor.getString(name_index);
+            String description = cursor.getString(description_index);
+            String muscleGroup_val = cursor.getString(muscleGroup_index);
+
+            notes.add(new Note(name, description, muscleGroup_val));
+        }
+
+        cursor.close();
+
+        return notes;
+    }
+
     public ArrayList<Note> getAllNotes(){
         SQLiteDatabase db = getReadableDatabase();
         ArrayList<Note> notes = new ArrayList<Note>();

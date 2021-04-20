@@ -23,7 +23,8 @@
         android:textIsSelectable="false"
         android:textSize="30sp"
         tools:text="@string/edit_workout_item_lbl"
-        android:textAppearance="textAppearanceHeadline2"/>
+       />
+<!--    android:textAppearance="textAppearanceHeadline2"-->
 
 
 

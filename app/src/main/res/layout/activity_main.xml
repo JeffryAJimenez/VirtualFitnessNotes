@@ -21,8 +21,8 @@
         android:text="@string/form_detail"
         android:textIsSelectable="false"
         android:textSize="30sp"
-        android:textAppearance="textAppearanceHeadline2"
          />
+<!--    android:textAppearance="textAppearanceHeadline2"-->
 
 
 
@@ -145,7 +145,8 @@
             android:background="#FF5722"
             android:text="@string/randomize_button"
             app:backgroundTint="#FF5722"
-            android:layout_weight="50"/>
+            android:layout_weight="50"
+            android:onClick="onRandomize"/>
 
     </LinearLayout>
 

@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
     private AutoCompleteTextView drop_down_menu;
     private VirtualNotesDbHelper db;
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,4 +81,11 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, ViewNotesActivity.class);
         startActivity(intent);
     }
+
+    public void onRandomize(View view){
+        Intent intent = new Intent(MainActivity.this, CustomizeRandomWorkoutView.class);
+        startActivity(intent);
+    }
+
+
 }

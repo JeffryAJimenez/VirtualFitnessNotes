@@ -1,6 +1,8 @@
 package com.fitness.virtialnotes.models;
 
-public class Note {
+import java.io.Serializable;
+
+public class Note implements Serializable {
 
     private String exerciseName;
     final private String description;

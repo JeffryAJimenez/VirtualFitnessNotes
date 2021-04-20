@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FitnessNotes">
-        <activity android:name=".EditNoteView"></activity>
+        <activity android:name=".ShowPlanActivity"></activity>
+        <activity
+            android:name=".CustomizeRandomWorkoutView"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity android:name=".EditNoteView" />
         <activity android:name=".ViewNotesActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
