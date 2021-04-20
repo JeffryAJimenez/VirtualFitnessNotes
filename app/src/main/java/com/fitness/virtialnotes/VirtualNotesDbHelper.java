@@ -106,9 +106,10 @@ public class VirtualNotesDbHelper extends SQLiteOpenHelper {
         return db.delete(FeedEntry.TABLE_NAME, selection, selectionArgs);
     }
 
-    public int UpdateNote(Note note){
+    public int UpdateNote(Note note, String original_name){
 
         SQLiteDatabase db = getWritableDatabase();
+        note.setExerciseName(note.getExerciseName().toUpperCase());
 
         ContentValues values = new ContentValues();
         values.put(FeedEntry.COLUMN_NAME_EXERCISE_NAME, note.getExerciseName());
@@ -117,7 +118,7 @@ public class VirtualNotesDbHelper extends SQLiteOpenHelper {
 
         // Which row to update, based on the title
         String selection = FeedEntry.COLUMN_NAME_EXERCISE_NAME + " LIKE ?";
-        String[] selectionArgs = {note.getExerciseName() };
+        String[] selectionArgs = {original_name };
 
         return db.update(
                 FeedEntry.TABLE_NAME,

@@ -3,7 +3,6 @@ package com.fitness.virtialnotes;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,7 +10,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -21,8 +19,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RequiresApi(api = Build.VERSION_CODES.R)
-public class MainActivity extends AppCompatActivity {
 
+public class EditNoteView extends AppCompatActivity {
     private static final ArrayList<String> DROP_DOWN_VALUES = new ArrayList<>(List.of("calves",
             "hamstrings",
             "quadriceps",
@@ -34,17 +32,23 @@ public class MainActivity extends AppCompatActivity {
             "lats",
             "chest"));
 
+    final private String NAME_TAG = "NAME";
+    final private String DESCRIPTION_TAG = "description";
+    final private String MUSCLE_GROUP_TAG = "MUSCLE_GROUP";
 
+    private String original;
     private EditText input_name;
     private EditText input_description;
     private AutoCompleteTextView drop_down_menu;
+
     private VirtualNotesDbHelper db;
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_edit_note_view);
+
+        Bundle extras = getIntent().getExtras();
 
         db = new VirtualNotesDbHelper(getApplicationContext());
 
@@ -52,13 +56,23 @@ public class MainActivity extends AppCompatActivity {
         input_description = (EditText)findViewById(R.id.description_box);
         drop_down_menu = (AutoCompleteTextView) findViewById(R.id.spinner_autoComplete);
 
-        ArrayAdapter<String>adapter = new ArrayAdapter<String>(MainActivity.this, R.layout.option_item, DROP_DOWN_VALUES);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(EditNoteView.this, R.layout.option_item, DROP_DOWN_VALUES);
 
+//        adapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
         drop_down_menu.setAdapter(adapter);
-        drop_down_menu.setText(adapter.getItem(0), false);
+        int spinnerPosition = DROP_DOWN_VALUES.indexOf(extras.getString(MUSCLE_GROUP_TAG));
+        drop_down_menu.setText(adapter.getItem(spinnerPosition), false);
+
+        original = extras.getString(NAME_TAG);
+        input_name.setText(extras.getString(NAME_TAG));
+        input_description.setText(extras.getString(DESCRIPTION_TAG));
+
+//        int spinnerPosition = DROP_DOWN_VALUES.indexOf(extras.getString(MUSCLE_GROUP_TAG));
+//        drop_down_menu.setText(adapter.getItem(spinnerPosition), false);
+
     }
 
-    public void onCreateNewNote(View view){
+    public void onUpdateNote(View view){
 
         String name = input_name.getText().toString().trim();
         String description = input_description.getText().toString().trim();
@@ -73,12 +87,10 @@ public class MainActivity extends AppCompatActivity {
             return;
         }
 
-        Note note = new Note(name, description, muscleGroup);
-        db.addNote(note);
-    }
 
-    public void onSeeNotes(View view){
-        Intent intent = new Intent(MainActivity.this, ViewNotesActivity.class);
-        startActivity(intent);
+        Note note = new Note(name, description, muscleGroup);
+        db.UpdateNote(note, original);
+
+        finish();
     }
 }

@@ -5,8 +5,11 @@
     <string name="main_page_header">Fitness Notes</string>
     <string name="workout_name">Enter Workout Name</string>
     <string name="workout_description">Workout Description</string>
-    <string name="form_detail">Create New Workout Item</string>
+    <string name="form_detail">Create Workout Note</string>
     <string name="randomize_button">RANDOMIZE WORKOUT</string>
     <string name="workout_name_labl">Workout Name:</string>
     <string name="workout_description_labl">Description:</string>
+    <string name="edit_workout_item_lbl">Edit Workout Note</string>
+    <string name="update_button">UPDATE NOTE</string>
+    <string name="delete_button">DELETE NOTE</string>
 </resources>

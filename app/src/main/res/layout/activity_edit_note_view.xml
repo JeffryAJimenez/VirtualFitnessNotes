@@ -2,10 +2,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="fill_parent" android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:layout_centerHorizontal="true"
     android:padding="10dp"
-    tools:context=".MainActivity">
+    tools:context=".EditNoteView">
 
 
     <TextView
@@ -17,12 +18,12 @@
         android:layout_marginTop="40dp"
         android:fontFamily="sans-serif"
         android:gravity="center"
-        android:hint="@string/form_detail"
-        android:text="@string/form_detail"
+        android:hint="@string/edit_workout_item_lbl"
+        android:text="@string/app_name"
         android:textIsSelectable="false"
         android:textSize="30sp"
-        android:textAppearance="textAppearanceHeadline2"
-         />
+        tools:text="@string/edit_workout_item_lbl"
+        android:textAppearance="textAppearanceHeadline2"/>
 
 
 
@@ -100,10 +101,16 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
+<!--    <Spinner-->
+<!--        android:id="@+id/spinner"-->
+<!--        android:layout_width="200dp"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_below="@+id/description"-->
+<!--        android:layout_marginTop="10dp" />-->
 
     <Button
-        style="@style/Widget.AppCompat.Button.Colored"
         android:id="@+id/create_content"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/spinner"
@@ -111,43 +118,25 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="0dp"
         android:layout_marginTop="30dp"
-        android:onClick="onCreateNewNote"
-        android:text="@string/create_button"
-        app:backgroundTint="#4CAF50"
-        android:background="#4CAF50"/>
+        android:background="#4CAF50"
+        android:onClick="onUpdateNote"
+        android:text="@string/update_button"
+        app:backgroundTint="#4CAF50" />
 
-    <LinearLayout
+    <Button
+        android:id="@+id/delete_content"
+        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/create_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="0dp"
         android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        android:padding="0dp"
-        android:weightSum="100">
-
-
-        <Button
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:id="@+id/view_notes"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#FF5722"
-            android:text="@string/view_workouts"
-            app:backgroundTint="#FF5722"
-            android:layout_weight="50"
-            android:onClick="onSeeNotes"/>
-
-        <Button
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:id="@+id/button5"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#FF5722"
-            android:text="@string/randomize_button"
-            app:backgroundTint="#FF5722"
-            android:layout_weight="50"/>
-
-    </LinearLayout>
+        android:background="#4CAF50"
+        android:onClick="onUpdateNote"
+        android:text="@string/delete_button"
+        app:backgroundTint="#E91E63" />
 
 
 
