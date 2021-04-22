@@ -75,17 +75,13 @@ public class MainActivity extends AppCompatActivity {
 
         Note note = new Note(name, description, muscleGroup);
         db.addNote(note);
+
+        input_name.setText("");
+        input_description.setText("");
+
     }
 
-    public void onSeeNotes(View view){
-        Intent intent = new Intent(MainActivity.this, ViewNotesActivity.class);
-        startActivity(intent);
-    }
 
-    public void onRandomize(View view){
-        Intent intent = new Intent(MainActivity.this, CustomizeRandomWorkoutView.class);
-        startActivity(intent);
-    }
 
 
 }

@@ -9,18 +9,20 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FitnessNotes">
-        <activity android:name=".ShowPlanActivity"></activity>
+        <activity android:name=".DashBoardActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ShowPlanActivity" />
         <activity
             android:name=".CustomizeRandomWorkoutView"
             android:windowSoftInputMode="adjustNothing" />
         <activity android:name=".EditNoteView" />
         <activity android:name=".ViewNotesActivity" />
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

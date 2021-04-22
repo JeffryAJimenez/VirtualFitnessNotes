@@ -8,22 +8,6 @@
     android:padding="10dp">
 
 
-    <TextView
-
-        android:id="@+id/TextView01"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
-        android:fontFamily="sans-serif"
-        android:gravity="center"
-        android:hint="@string/customize_plan"
-        android:text="@string/app_name"
-        android:textIsSelectable="false"
-        android:textSize="30sp"
-        tools:text="@string/customize_plan"
-
-        />
 <!--    android:textAppearance="textAppearanceHeadline2"-->
 
     <com.google.android.material.textfield.TextInputLayout
@@ -31,16 +15,14 @@
         style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/TextView01"
-        android:layout_marginTop="100dp"
-        >
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp">
 
         <AutoCompleteTextView
             android:id="@+id/spinner_autoComplete"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="none"
-            />
+            android:inputType="none" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -66,6 +48,7 @@
             android:id="@+id/number_box"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
             />
 
     </com.google.android.material.textfield.TextInputLayout>
@@ -104,7 +87,6 @@
         android:layout_below="@+id/textButton"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </RelativeLayout>

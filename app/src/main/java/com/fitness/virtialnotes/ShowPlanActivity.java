@@ -13,7 +13,7 @@ import com.fitness.virtialnotes.models.Note;
 
 import java.util.ArrayList;
 
-public class ShowPlanActivity extends AppCompatActivity {
+public class ShowPlanActivity extends AppCompatActivity implements PlannerAdapter.OnNoteClickListener{
     private final String DATA_TAG = "DATA";
 
     RecyclerView recyclerView;
@@ -31,9 +31,14 @@ public class ShowPlanActivity extends AppCompatActivity {
 
         recyclerView = (RecyclerView)findViewById(R.id.recycle_view);
 
-        adapter = new PlannerAdapter(this, data);
+        adapter = new PlannerAdapter(this, data, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+    }
+
+    @Override
+    public void onNoteClick(int position) {
 
     }
 }
