@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 
@@ -15,6 +16,9 @@ import java.util.ArrayList;
 
 public class ShowPlanActivity extends AppCompatActivity implements PlannerAdapter.OnNoteClickListener{
     private final String DATA_TAG = "DATA";
+    String WORK_OUT_NAME = "workout_name";
+    String MUSCLE_GROUP = "muscle-group";
+    String DESCRIPTION = "description";
 
     RecyclerView recyclerView;
     private static ArrayList<Note> data;
@@ -39,6 +43,15 @@ public class ShowPlanActivity extends AppCompatActivity implements PlannerAdapte
 
     @Override
     public void onNoteClick(int position) {
+        Note selectedItem =  (Note) data.get(position);
+        String name = selectedItem.getExerciseName();
+        String description = selectedItem.getDescription();
+        String muscleGroup = selectedItem.getMuscleGroup();
 
+        Intent intent = new Intent(ShowPlanActivity.this, ViewNoteActivity.class);
+        intent.putExtra(WORK_OUT_NAME , name);
+        intent.putExtra(DESCRIPTION, description);
+        intent.putExtra(MUSCLE_GROUP, muscleGroup);
+        startActivity(intent);
     }
 }

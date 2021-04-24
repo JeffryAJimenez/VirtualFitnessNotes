@@ -26,17 +26,20 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="1dp"
+        android:layout_marginLeft="3dp"
+        android:layout_marginRight="3dp"
         android:fadingEdgeLength="3dp"
         android:foreground="?android:attr/selectableItemBackground"
         app:cardElevation="4dp"
         app:cardMaxElevation="4dp"
-        android:focusable="true">
+        app:cardCornerRadius="11dp"
+        android:focusable="true"
+        app:contentPadding="10dp"
+        app:contentPaddingBottom="10dp"
+        app:contentPaddingLeft="10dp"
+        app:contentPaddingRight="10dp"
+        app:contentPaddingTop="10dp"
+        >
 
         <LinearLayout
             android:layout_width="match_parent"

@@ -18,9 +18,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="?attr/selectableItemBackground"
+    android:background="#DFDFDF"
     android:gravity="center"
-    android:minHeight="64dp">
+    android:minHeight="64dp"
+    >
 
 
     <!--    android:textColor="@color/mtrl_list_item_tint-->
@@ -39,7 +40,8 @@
         android:focusable="true"
         android:foreground="?android:attr/selectableItemBackground"
         app:cardElevation="4dp"
-        app:cardMaxElevation="4dp">
+        app:cardMaxElevation="4dp"
+        app:cardCornerRadius="11dp">
 
         <LinearLayout
             android:layout_width="match_parent"

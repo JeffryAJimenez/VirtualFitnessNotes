@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DashBoardActivity"
-    android:backgroundTint="@color/black">
+    android:background="#DFDFDF"
+    >
 
     <TextView
         android:id="@+id/welecome_lbl"
@@ -18,7 +19,8 @@
         android:text="Welcome to"
         android:textSize="40sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/black"/>
 
     <TextView
         android:id="@+id/textView"
@@ -29,13 +31,14 @@
         android:text="Fitness Notes"
         android:textSize="40sp"
         app:layout_constraintStart_toStartOf="@+id/welecome_lbl"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/black"/>
 
     <LinearLayout
         android:id="@+id/layout1"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal"
         android:weightSum="2"
         app:layout_constraintTop_toBottomOf="@+id/textView"
@@ -54,6 +57,7 @@
             android:clickable="true"
             android:focusable="true"
             android:onClick="onCreateNote"
+            app:cardCornerRadius="11dp"
             >
 
             <TextView
@@ -64,7 +68,8 @@
                 android:fontFamily="sans-serif"
                 android:onClick="onCreateNote"
                 android:text="Create Note"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:textColor="@color/black"/>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
@@ -79,7 +84,8 @@
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="onViewNotes">
+            android:onClick="onViewNotes"
+            app:cardCornerRadius="11dp">
 
             <TextView
                 android:id="@+id/view_notes_labl"
@@ -88,7 +94,8 @@
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:fontFamily="sans-serif"
                 android:text="View Notes"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:textColor="@color/black"/>
         </androidx.cardview.widget.CardView>
     </LinearLayout>
 
@@ -113,7 +120,8 @@
             android:foreground="?android:attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:onClick="onStartRandomize">
+            android:onClick="onStartRandomize"
+            app:cardCornerRadius="11dp">
 
             <TextView
                 android:id="@+id/randomize_plan_labl"
@@ -122,7 +130,8 @@
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:fontFamily="sans-serif"
                 android:text="Randomize Plan"
-                android:textSize="30sp" />
+                android:textSize="30sp"
+                android:textColor="@color/black"/>
         </androidx.cardview.widget.CardView>
 
 

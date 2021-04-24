@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".CustomizeRandomWorkoutView"
-    android:padding="10dp">
+    android:padding="10dp"
+    >
 
 
 <!--    android:textAppearance="textAppearanceHeadline2"-->
@@ -87,6 +88,7 @@
         android:layout_below="@+id/textButton"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="#DFDFDF"/>
 
 </RelativeLayout>

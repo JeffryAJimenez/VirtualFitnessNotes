@@ -15,6 +15,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.fitness.virtialnotes.database.MuscleGroupDbHelper;
+import com.fitness.virtialnotes.models.MuscleGroup;
 import com.fitness.virtialnotes.models.Note;
 
 import java.util.ArrayList;
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText input_description;
     private AutoCompleteTextView drop_down_menu;
     private VirtualNotesDbHelper db;
+    private  ArrayList<MuscleGroup> data_muscle_group;
+    private MuscleGroupDbHelper muscle_group_db;
 
 
     @Override
@@ -47,12 +51,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         db = new VirtualNotesDbHelper(getApplicationContext());
+        muscle_group_db = new MuscleGroupDbHelper(getApplicationContext());
 
         input_name = (EditText)findViewById(R.id.name_box);
         input_description = (EditText)findViewById(R.id.description_box);
         drop_down_menu = (AutoCompleteTextView) findViewById(R.id.spinner_autoComplete);
 
-        ArrayAdapter<String>adapter = new ArrayAdapter<String>(MainActivity.this, R.layout.option_item, DROP_DOWN_VALUES);
+        data_muscle_group = muscle_group_db.getAllMuscleGroups();
+
+        ArrayList<String> temp = new ArrayList<>();
+
+        data_muscle_group.forEach((muscleGroup -> temp.add(muscleGroup.getName())));
+
+        ArrayAdapter<String>adapter = new ArrayAdapter<String>(MainActivity.this, R.layout.option_item, temp);
 
         drop_down_menu.setAdapter(adapter);
         drop_down_menu.setText(adapter.getItem(0), false);

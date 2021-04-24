@@ -15,6 +15,8 @@ import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 
 import com.fitness.virtialnotes.adapters.CustomizeRandomWorkoutRecyclerAdapter;
+import com.fitness.virtialnotes.database.MuscleGroupDbHelper;
+import com.fitness.virtialnotes.models.MuscleGroup;
 import com.fitness.virtialnotes.models.Note;
 import com.fitness.virtialnotes.models.PlannerConstraint;
 
@@ -43,6 +45,8 @@ public class CustomizeRandomWorkoutView extends AppCompatActivity {
     private EditText number;
     private AutoCompleteTextView drop_down_menu;
     private VirtualNotesDbHelper db;
+    private  ArrayList<MuscleGroup> data_muscle_group;
+    private MuscleGroupDbHelper muscle_group_db;
 
     private static ArrayList<PlannerConstraint> data;
     CustomizeRandomWorkoutRecyclerAdapter adapter;
@@ -54,12 +58,18 @@ public class CustomizeRandomWorkoutView extends AppCompatActivity {
         setContentView(R.layout.activity_customize_random_workout_view);
 
         db = new VirtualNotesDbHelper(this);
+        muscle_group_db = new MuscleGroupDbHelper(getApplicationContext());
         data = new ArrayList<>();
 
         recyclerView =  (RecyclerView) findViewById(R.id.recycle_view);
         number = (EditText) findViewById(R.id.number_box);
         drop_down_menu = (AutoCompleteTextView) findViewById(R.id.spinner_autoComplete);
-        ArrayAdapter<String> adapter_dropdown = new ArrayAdapter<String>(CustomizeRandomWorkoutView.this, R.layout.option_item, DROP_DOWN_VALUES);
+
+        data_muscle_group = muscle_group_db.getAllMuscleGroups();
+        ArrayList<String> temp = new ArrayList<>();
+        data_muscle_group.forEach((muscleGroup -> temp.add(muscleGroup.getName())));
+
+        ArrayAdapter<String> adapter_dropdown = new ArrayAdapter<String>(CustomizeRandomWorkoutView.this, R.layout.option_item, temp);
 
         drop_down_menu.setAdapter(adapter_dropdown);
         drop_down_menu.setText(adapter_dropdown.getItem(0), false);
@@ -72,6 +82,7 @@ public class CustomizeRandomWorkoutView extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void addConstraint(View view){
 
+        if( this.number.getText().toString().isEmpty()) return;
         int number = Integer.parseInt(this.number.getText().toString());
         String muscleGroup = drop_down_menu.getText().toString().trim();
         AtomicBoolean exist = new AtomicBoolean(false);

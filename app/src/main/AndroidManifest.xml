@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FitnessNotes">
+        <activity android:name=".ViewNoteActivity"></activity>
         <activity android:name=".DashBoardActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,8 +23,7 @@
             android:windowSoftInputMode="adjustNothing" />
         <activity android:name=".EditNoteView" />
         <activity android:name=".ViewNotesActivity" />
-        <activity android:name=".MainActivity">
-        </activity>
+        <activity android:name=".MainActivity"></activity>
     </application>
 
 </manifest>
