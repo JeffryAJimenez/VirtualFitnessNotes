@@ -93,4 +93,10 @@ public class EditNoteView extends AppCompatActivity {
 
         finish();
     }
+
+    public void onDeleteNote(View view){
+
+        db.deleteNote(original);
+        finish();
+    }
 }

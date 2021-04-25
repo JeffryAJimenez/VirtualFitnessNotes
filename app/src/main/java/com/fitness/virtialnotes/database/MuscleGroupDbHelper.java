@@ -14,6 +14,8 @@ import androidx.annotation.RequiresApi;
 
 import com.fitness.virtialnotes.VirtualNotesDbHelper;
 import com.fitness.virtialnotes.models.MuscleGroup;
+import com.fitness.virtialnotes.models.Note;
+import com.google.android.material.tabs.TabLayout;
 
 
 import java.util.ArrayList;
@@ -182,6 +184,47 @@ public class MuscleGroupDbHelper extends SQLiteOpenHelper {
         cursor.close();
 
         return muscleGroups;
+    }
+
+    public MuscleGroup getMuscleGroupByName(String name){
+        name = name.toUpperCase();
+        SQLiteDatabase db = getReadableDatabase();
+        MuscleGroup muscleGroup = new MuscleGroup("", "");
+
+        String[] projection = {
+                BaseColumns._ID,
+                TableEntry.COLUMN_NAME
+        };
+
+        // How you want the results sorted in the resulting Cursor
+
+        String selection = TableEntry.COLUMN_NAME+ " LIKE ?";
+        String[] selectionArgs = {name};
+
+        Cursor cursor = db.query(
+                TableEntry.TABLE_NAME,   // The table to query
+                projection,             // The array of columns to return (pass null to get all)
+                selection,              // The columns for the WHERE clause
+                selectionArgs,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                null               // The sort order
+        );
+
+        int name_index = cursor.getColumnIndex(TableEntry.COLUMN_NAME);
+        int id_index = cursor.getColumnIndex(TableEntry._ID);
+
+
+        while(cursor.moveToNext()){
+
+            muscleGroup.setID(cursor.getString(id_index));
+            muscleGroup.setName(cursor.getString(name_index));
+
+        }
+
+        cursor.close();
+
+        return muscleGroup;
     }
 
 }

@@ -28,4 +28,9 @@ public class DashBoardActivity extends AppCompatActivity {
         Intent intent = new Intent(DashBoardActivity.this, CustomizeRandomWorkoutView.class);
         startActivity(intent);
     }
+
+    public void onAddMuscleGroup(View view){
+        Intent intent = new Intent(DashBoardActivity.this, MuscleGroupsListActivity.class);
+        startActivity(intent);
+    }
 }

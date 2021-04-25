@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
+import com.fitness.virtialnotes.database.MuscleGroupDbHelper;
 import com.fitness.virtialnotes.models.Note;
 
 import java.util.ArrayList;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 
 public class VirtualNotesDbHelper extends SQLiteOpenHelper {
 
-    public static final int DATABASE_VERSION = 1;
+    public static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "FitnessVirtualNotes.db";
 
     /* Inner class that defines the table contents */
@@ -46,8 +47,10 @@ public class VirtualNotesDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        onUpgrade(db, oldVersion, newVersion);
+        db.setVersion(oldVersion);
     }
+
+
 
     public long addNote(Note note){
 
@@ -96,12 +99,12 @@ public class VirtualNotesDbHelper extends SQLiteOpenHelper {
         return db.insert(FeedEntry.TABLE_NAME, null, values);
     }
 
-    public int deleteNote(Note note){
+    public int deleteNote(String name){
         SQLiteDatabase db = getWritableDatabase();
 
         String selection = FeedEntry.COLUMN_NAME_EXERCISE_NAME + " LIKE ?";
         // Specify arguments in placeholder order.
-        String[] selectionArgs = { note.getExerciseName() };
+        String[] selectionArgs = { name };
         // Issue SQL statement.
         return db.delete(FeedEntry.TABLE_NAME, selection, selectionArgs);
     }
