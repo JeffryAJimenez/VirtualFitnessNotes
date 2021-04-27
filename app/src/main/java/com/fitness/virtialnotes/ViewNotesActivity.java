@@ -44,6 +44,7 @@ public class ViewNotesActivity extends AppCompatActivity implements PlannerAdapt
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 //        setContentView(R.layout.activity_view_notes);
         setContentView(R.layout.activity_show_plan);
 

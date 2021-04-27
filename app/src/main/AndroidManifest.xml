@@ -9,8 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FitnessNotes">
-        <activity android:name=".MuscleGroupsListActivity"></activity>
-        <activity android:name=".ViewNoteActivity" />
+        <activity android:name=".MuscleGroupsListActivity" android:parentActivityName=".DashBoardActivity"></activity>
+        <activity android:name=".ViewNoteActivity"  android:parentActivityName=".ShowPlanActivity" />
         <activity android:name=".DashBoardActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,13 +18,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ShowPlanActivity" />
+        <activity android:name=".ShowPlanActivity" android:parentActivityName=".CustomizeRandomWorkoutView" />
         <activity
             android:name=".CustomizeRandomWorkoutView"
-            android:windowSoftInputMode="adjustNothing" />
-        <activity android:name=".EditNoteView" />
-        <activity android:name=".ViewNotesActivity" />
-        <activity android:name=".MainActivity" />
+            android:windowSoftInputMode="adjustNothing" android:parentActivityName=".DashBoardActivity" />
+        <activity android:name=".EditNoteView" android:parentActivityName=".ViewNotesActivity"/>
+        <activity android:name=".ViewNotesActivity" android:parentActivityName=".DashBoardActivity" />
+        <activity android:name=".MainActivity" android:parentActivityName=".DashBoardActivity" />
     </application>
 
 </manifest>

@@ -50,6 +50,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //back button
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         db = new VirtualNotesDbHelper(getApplicationContext());
         muscle_group_db = new MuscleGroupDbHelper(getApplicationContext());
 

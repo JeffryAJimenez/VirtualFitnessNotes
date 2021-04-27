@@ -48,6 +48,8 @@ public class EditNoteView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_note_view);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         Bundle extras = getIntent().getExtras();
 
         db = new VirtualNotesDbHelper(getApplicationContext());

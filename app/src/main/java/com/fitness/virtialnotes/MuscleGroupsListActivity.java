@@ -37,6 +37,8 @@ public class MuscleGroupsListActivity extends AppCompatActivity  implements Musc
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_muscle_groups_list);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         input = (EditText) findViewById(R.id.input);
         recyclerView = (RecyclerView) findViewById(R.id.recycle_view);
         addButton = (ImageView) findViewById(R.id.add_button);
